@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TUSHAR APP STORE</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <a class="brand" href="#" onclick="show('store');return false"><span class="brand-mark ai-mark">AI</span><img class="tushar-ai-logo" src="/tushar-ai-logo.png" alt="TUSHAR.AI"></a>
+  <div class="side-label">DISCOVER</div>
+  <nav class="side-nav">
+    <button class="active" onclick="show('store')"><span>⌂</span> Home</button>
+    <button onclick="show('store')"><span>⌕</span> Discover</button>
+    <button onclick="filterCategory('Games')"><span>⌘</span> Games</button>
+    <button onclick="filterCategory('Tools')"><span>▦</span> Apps</button>
+    <button onclick="show('store')"><span>☷</span> Categories</button>
+    <button onclick="loadMine();show('account')"><span>▣</span> My Apps</button>
+    <button onclick="show('publish')"><span>☁</span> Publish App</button>
+    <button onclick="show('account')"><span>♙</span> Profile</button>
+  </nav>
+  <div class="tools-menu-wrap">
+    <button class="tools-dots" onclick="toggleToolsMenu(event)" aria-label="AI tools">⋮ <span>AI Tools</span></button>
+    <div id="toolsMenu" class="tools-menu hidden">
+      <div class="tools-menu-title">AI TOOLS</div>
+      <button onclick="selectAITool('HD / 4K Image')">🖼️ HD / 4K Image</button>
+      <button onclick="selectAITool('Background Remove')">✂️ Background Remove</button>
+      <button onclick="selectAITool('OCR')">🔎 OCR</button>
+      <button onclick="selectAITool('PDF Chat')">📄 PDF Chat</button>
+      <button onclick="selectAITool('Translator')">🌐 Translator</button>
+      <button onclick="selectAITool('Code Helper')">💻 Code Helper</button>
+      <button onclick="selectAITool('Debugger')">🛠️ Debugger</button>
+      <div class="tools-menu-divider"></div>
+      <button onclick="selectAITool('Website Status Checker')">🌐 Website Status Checker</button>
+      <button onclick="selectAITool('DNS Lookup')">📡 DNS Lookup</button>
+      <button onclick="selectAITool('JSON Formatter')">🧩 JSON Formatter</button>
+      <button onclick="selectAITool('Hash Generator')">#️⃣ Hash Generator</button>
+      <button onclick="selectAITool('Regex Tester')">🧪 Regex Tester</button>
+      <button onclick="selectAITool('URL Encoder / Decoder')">🔗 URL Encoder / Decoder</button>
+      <button onclick="selectAITool('Color / Gradient Generator')">🎨 Color / Gradient Generator</button>
+      <button onclick="selectAITool('Git Command Helper')">🚀 Git Command Helper</button>
+    </div>
+  </div>
+  <div class="pro-card"><div class="pro-icon">♛</div><b>Become a Pro Developer</b><p>Publish unlimited apps, get more visibility and grow your audience.</p><button onclick="show('publish')">Upgrade Now →</button></div>
+  <div class="side-foot">TUSHAR APP STORE</div>
+</aside>
+
+<div class="page">
+<header class="topbar">
+  <div class="mobile-brand"><img class="tushar-ai-logo mobile-logo" src="/tushar-ai-logo.png" alt="TUSHAR.AI"></div>
+  <div class="top-search"><span>⌕</span><input id="globalSearch" placeholder="Search apps, games, or developers…" oninput="syncSearch(this.value)"></div>
+  <div class="top-actions"><button class="icon-btn">♧</button><button class="avatar-btn" onclick="show('account')"><span id="topAvatar">T</span><span class="top-user"><b>Tushar</b><small>Developer</small></span>⌄</button></div>
+</header>
+
+<main>
+<section class="hero-dashboard">
+  <div class="hero-copy"><span class="pill">✦ WISY STYLE</span><h1>Find your perfect<br><em>app or game</em></h1><p>Discover amazing apps, explore new games, and support independent developers.</p><div class="hero-search"><span>⌕</span><input id="heroSearch" placeholder="Search apps, games, or developers…" oninput="syncSearch(this.value)"><button onclick="loadApps()">→</button></div><div class="hero-tabs"><button class="selected" onclick="filterCategory('')">Popular</button><button onclick="filterCategory('')">Latest</button><button onclick="filterCategory('Games')">Trending</button><button onclick="filterCategory('Tools')">Free</button><button onclick="show('publish')">Premium</button></div></div>
+  <div class="hero-photo">
+  <div class="tushar-ai-visual">
+    <div class="ai-orbit orbit-one"></div>
+    <div class="ai-orbit orbit-two"></div>
+    <div class="ai-core">
+      <div class="ai-core-glow"></div>
+      <div class="ai-logo-3d">AI</div>
+    </div>
+    <div class="ai-brand-label">TUSHAR <b>AI</b></div>
+    <div class="ai-brand-sub">APP STORE • CREATOR EDITION</div>
+  </div>
+  <div class="publish-float" onclick="show('publish')"><span>🚀</span><div><b>Publish Your App</b><small>Share your creativity with the world</small></div>→</div>
+</div>
+</section>
+
+<div class="dashboard-grid">
+<div class="main-column">
+<section id="store" class="store-section">
+  <div class="sectionhead"><div><h2>♛ Featured Apps</h2></div><button class="view-all" onclick="filterCategory('')">View All →</button></div>
+  <div class="filters"><input id="search" placeholder="Search apps…" oninput="loadApps()"><select id="category" onchange="loadApps()"><option value="">All categories</option><option>Tools</option><option>Games</option><option>Education</option><option>Entertainment</option><option>Productivity</option><option>HACK</option><option>Other</option></select></div>
+  <div id="apps" class="cards"></div>
+  <div class="sectionhead popular-head"><h2>🎮 Popular Games</h2><button class="view-all" onclick="filterCategory('Games')">View All →</button></div>
+</section>
+
+<section id="publish" class="panel hidden">\span class="eyebrow">CREATOR STUDIO</span><h2>Publish your HTML app</h2>
+<form id="publishForm"><input name="title" placeholder="App title" required><textarea name="description" placeholder="Description"></textarea><select name="category"><option>Other</option><option>Tools</option><option>Games</option><option>Education</option><option>Entertainment</option><option>Productivity</option><option>HACK</option></select>
+<div class="photo-upload"><label class="file file-3d"><span class="file-3d-icon"><i></i></span><div><b>App icon photo</b><span>PNG / JPG / WEBP / GIF · max 2 MB</span><input id="iconFile" type="file" name="iconFile" accept="image/png,image/jpeg,image/webp,image/gif"></label><div id="iconPreview" class="preview one"></div></div>
+<div class="photo-upload"><label class="file file-3d"><span class="file-3d-icon screenshot-3d"><i></i></span><div><b>App screenshots</b><span>Select up to 9 images · each max 2 MB</span></div><input id="screenshotFiles" type="file" name="screenshotFiles" accept="image/png,image/jpeg,image/webp,image/gif" multiple></label><div id="screenshotPreview" class="preview"></div></div>
+<input name="icon" placeholder="Or paste app icon image URL (optional)"><textarea name="screenshots" placeholder="Or paste screenshot image URLs, one per line (optional)"></textarea><label class="file"><b>HTML file</b><span>Max 3 MB</span><input type="file" name="html" accept=".html,.htm" required></label><button class="primary">Submit for publishing</button></form><p id="publishMsg" class="notice"></p><small>New submissions wait for admin approval.</small></section>
+
+<section id="account" class="panel hidden"><span class="eyebrow">YOUR ACCOUNT</span><h2>Welcome, creator</h2><div class="auth"><form id="signup"><h3>Create account</h3><input name="username" placeholder="Username" required><input name="password" type="password" minlength="6" placeholder="Password (6+ chars)" required><button class="primary">Sign up</button></form><form id="login"><h3>Login</h3><input name="username" placeholder="Username" required><input name="password" type="password" placeholder="Password" required><button class="primary">Login</button></form></div><div class="profile panel2"><h3>Publisher profile</h3><div class="profile-photo-row"><img id="profilePreview" class="profile-preview hidden" alt="Profile photo"><div><label class="file"><b>Upload profile photo</b><span>PNG / JPG / WEBP / GIF · max 2 MB</span><input id="profilePhoto" type="file" accept="image/png,image/jpeg,image/webp,image/gif"></label><div id="profileFilePreview" class="preview one"></div></div><button onclick="uploadProfilePhoto()">Upload Photo</button></div><input id="bio" placeholder="Short bio"><input id="avatar" placeholder="Profile photo URL (optional)"><button onclick="saveProfile()">Save profile</button><p id="profileMsg"></p></div><button onclick="logout()">Log out</button><h3>My apps</h3><div id="mine"></div></section>
+<section id="admin" class="panel hidden"><span class="eyebrow">MODERATION</span><h2>Admin panel</h2><p>Review submissions and approve, reject, or delete apps.</p><div id="adminApps"></div></section>
+<section class="premium"><div><span class="gold">✦ PREMIUM</span><h2>Premium tools</h2><p>Featured placement and extra creator features.</p><strong>₹99 / month</strong><p class="locked">🔒 Premium is locked. Payments and upgrades are disabled.</p></div><button disabled>Premium Locked</button></section>
+</div>
+
+<aside class="rightbar">
+ <div class="profile-card"><div class="profile-top"><div class="big-avatar" id="sideAvatar">T</div><div><b>Tushar</b><small>@tushar_dev</small><span>Developer</span></div></div><div class="stats"><div><b>12</b><small>Apps</small></div><div><b>5.2K</b><small>Downloads</small></div><div><b>4.8</b><small>Rating</small></div></div><button onclick="show('account')">♙ My Profile <i>›</i></button><button onclick="show('account')">▣ My Apps <i>›</i></button><button>⚙ Settings <i>›</i></button><button onclick="logout()">⇥ Logout <i>›</i></button></div>
+ <div class="side-widget"><div class="widget-head"><h3>♨ Trending Now</h3><button onclick="filterCategory('Games')">View All →</button></div><div class="trend"><b>🎮 Zenix Battle Royale</b><small>Game <span>⇩ 3.4M</span></small></div><div class="trend"><b>▤ NoteMaster</b><small>Productivity <span>⇩ 1.8M</span></small></div><div class="trend"><b>◈ VR Galaxy</b><small>Game <span>⇩ 1.2M</span></small></div><div class="trend"><b>🤖 AI Image Generator</b><small>Tools <span>⇩ 980K</span></small></div><div class="trend"><b>🟢 Crypto Tracker</b><small>Finance <span>⇩ 760K</span></small></div></div>
+ <div class="side-widget"><div class="widget-head"><h3>Categories</h3><button>View All →</button></div><div class="category-grid"><button onclick="filterCategory('Games')">🎮<b>Games</b><small>1.2K Apps</small></button><button onclick="filterCategory('Tools')">▦<b>Apps</b><small>2.4K Apps</small></button><button onclick="filterCategory('Tools')">🛠<b>Tools</b><small>856 Apps</small></button><button onclick="filterCategory('Entertainment')">▶<b>Entertainment</b><small>932 Apps</small></button></div></div>
+</aside>
+</div>
+
+<section id="aiChatPanel" class="ai-chat-panel hidden" aria-label="TUSHAR AI chat">
+  <div class="ai-chat-head">
+    <div><b>✦ TUSHAR AI</b><span id="activeToolLabel">AI Chat</span></div>
+    <button onclick="closeAIToolChat()" aria-label="Close chat">✕</button>
+  </div>
+  <div id="aiChatMessages" class="ai-chat-messages">
+    <div class="ai-msg ai-msg-bot">TUSHAR AI ready. Select a tool and type your message below.</div>
+  </div>
+  <form id="aiChatForm" class="ai-chat-form">
+    <input id="aiChatInput" autocomplete="off" placeholder="Message TUSHAR AI…" />
+    <button type="submit">➤</button>
+  </form>
+</section>
+</main>
+<footer>© TUSHAR APP STORE <span>· WISY-STYLE PURPLE / NAVY THEME</span></footer>
+</div></div>
+<div id="modal" class="modal hidden"><div class="modalbox"><button class="close" onclick="closeModal()">✕</button><div id="detail"></div></div></div><div id="lightbox" class="lightbox hidden" onclick="closeLightbox()"><button class="lightbox-close" onclick="closeLightbox()">✕</button><img id="lightboxImg" alt="Full size screenshot"></div>
+<script>function syncSearch(v){if(document.querySelector('#search'))document.querySelector('#search').value=v;loadApps()} function filterCategory(c){show('store');document.querySelector('#category').value=c;loadApps()}
+</script><script src="app.js"></script>
+<div id="aiToolToast" class="ai-tool-toast hidden"></div>
+</body></html>
